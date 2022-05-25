@@ -55,7 +55,7 @@ const Rating = (props) => {
   let sum = 0;
   //위에 만든 요일 배열에 랜덤숫자 넣는 함수
   const week_rates = week_days.map((w, idx) => {
-    const random = Math.floor(Math.random() * 5) + 1;
+    const random = Math.floor(Math.random() * 5);
     sum += random;
 
     return {
@@ -64,7 +64,7 @@ const Rating = (props) => {
       rate: random,
     };
   });
-  const rate_avg = (sum / week_rates.length).toFixed(1);
+  const rate_avg = (sum / week_rates.length + 1).toFixed(1);
   const [avg, setAvg] = useState(rate_avg); //평균을 구해서 state에 넣음
   return (
     <>
