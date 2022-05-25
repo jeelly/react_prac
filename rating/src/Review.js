@@ -12,10 +12,10 @@ import {
 const Review = (props) => {
   // const history = useHistory();
   const params = useParams();
-  console.log(props);
+  // console.log(props);
   //평점
   const [rate, setRate] = React.useState(0);
-
+  // console.log(rate);
   //별점
   React.useEffect(() => {
     const press = (e) => {

@@ -9,13 +9,15 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+
 //랜덤 1~5 생성
-function getRandomStar() {
-  return Math.floor(Math.random() * 5 + 1);
-}
+// function getRandomStar() {
+//   return Math.floor(Math.random() * 5 + 1);
+// }
 
 const Rating = (props) => {
   const history = useHistory();
+
   // // 날짜
   // const day = new Date ();
   // var week = new Array('일','월','화','수','목','금','토','일','월','화','수','목','금','토','일')
@@ -91,7 +93,7 @@ const Rating = (props) => {
                 );
               })}
               <StyledLink
-                to="#n"
+                to="#"
                 onClick={() => {
                   history.push(`/review/${w.day}`);
                 }}
