@@ -39,7 +39,7 @@ const Review = (props) => {
               onClick={() => {
                 setRate(idx + 1);
               }}
-              style={{ backgroundColor: rate < idx + 1 ? "#ddd" : "#FFD400" }}
+              style={{ backgroundColor: rate < idx + 1 ? "#ddd" : "#ffac64" }}
             ></Circle>
           );
         })}
@@ -66,7 +66,8 @@ const Circle = styled.div`
 `;
 const Pstyle = styled.p`
   color: #eee;
-  padding: 5px;
+  font-weight: bold;
+  padding: 2px 10px;
   border-radius: 10px;
   background-color: #8b6162;
   display: inline-block;
@@ -74,6 +75,8 @@ const Pstyle = styled.p`
 const Title = styled.h1`
   color: rosybrown;
   text-align: center;
+  font-size: 22px;
+  font-weight: normal;
 `;
 const Line = styled.hr`
   margin: 16px 0px;
@@ -83,6 +86,7 @@ const StyledLink = styled(Link)`
   border: none;
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
   font-size: 20px;
   color: #fff;
   padding: 10px 20px;

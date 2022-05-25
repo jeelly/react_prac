@@ -30,6 +30,8 @@ const Rating = (props) => {
   //   window.onload = function () {
   //   }
 
+  // const random = Math.floor(Math.random() * 10);
+  // console.log(random);
   //날짜
   const day_text = {
     0: "일",
@@ -42,32 +44,28 @@ const Rating = (props) => {
   };
 
   const week_days = Object.keys(day_text).map((_d, idx) => {
-    // 오늘 날짜를 구해요!
-    let today = new Date().getDay();
+    let today = new Date().getDay(); // 날짜함수에서 요일만 빼는방법
     let d =
-      today + parseInt(_d) > 6
-        ? today + parseInt(_d) - 7
-        : today + parseInt(_d);
-
-    // console.log(d);
+      today + parseInt(idx) > 6
+        ? today + parseInt(idx) - 7
+        : today + parseInt(idx);
     return day_text[d];
   });
-
   //평점 합계
   let sum = 0;
+  //위에 만든 요일 배열에 랜덤숫자 넣는 함수
   const week_rates = week_days.map((w, idx) => {
-    const random = Math.floor(Math.random() * (Math.floor(5) + 1));
-
+    const random = Math.floor(Math.random() * 5) + 1;
     sum += random;
 
     return {
+      // 0: {day:'수', rate:3} << 이런식의 배열 생성
       day: w,
       rate: random,
     };
   });
-
   const rate_avg = (sum / week_rates.length).toFixed(1);
-  const [avg, setAvg] = useState(rate_avg);
+  const [avg, setAvg] = useState(rate_avg); //평균을 구해서 state에 넣음
   return (
     <>
       <div>
@@ -75,15 +73,17 @@ const Rating = (props) => {
         <Line />
 
         {week_rates.map((w, idx) => {
+          // week_rates데이터로 w배열 생성
           return (
             <Item key={`week_day_${idx}`}>
               <Week>{w.day}</Week>
               {Array.from({ length: 5 }, (item, idx) => {
+                //객체를 복사해서 새로운 객체를 만든다
                 return (
                   <Circle
                     key={idx}
                     style={
-                      { backgroundColor: w.rate < idx ? "#ddd" : "#FFD400" }
+                      { backgroundColor: w.rate < idx ? "#ddd" : "#ffac64" }
                       // {borderLeft: w.rate < idx ? "15px solid #ddd" : "15px solid #ffeb3b"}
                       // {borderTop: w.rate < idx ? "15px solid #ddd" : "15px solid #ffeb3b"},
                     }
@@ -91,6 +91,7 @@ const Rating = (props) => {
                 );
               })}
               <StyledLink
+                to="#n"
                 onClick={() => {
                   history.push(`/review/${w.day}`);
                 }}
@@ -211,6 +212,7 @@ const StyledLink = styled(Link)`
 const Title = styled.h1`
   color: rosybrown;
   text-align: center;
+  font-size: 26px;
 `;
 const Line = styled.hr`
   margin: 16px 0px;
